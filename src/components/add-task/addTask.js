@@ -1,4 +1,4 @@
-import React ,{Component} from 'react';
+import React, {Component} from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -8,54 +8,52 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import DateFnsUtils from '@date-io/date-fns';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+import './addTask.css';
+import {MuiPickersUtilsProvider, TimePicker, DatePicker} from 'material-ui-pickers';
 
-import { MuiPickersUtilsProvider, TimePicker, DatePicker } from 'material-ui-pickers';
- class AddTask extends Component {
+class AddTask extends Component {
     state = {
         open: false,
-        selectedDate: new Date('2014-08-18T21:11:54'),
-
+        selectedDate: new Date('2019-04-29T21:11:54'),
     };
 
-    handleClickOpen = () => {
-        this.setState({ open: true });
+    handleOpen = () => {
+        this.setState({open: true});
     };
 
     handleClose = () => {
-        this.setState({ open: false });
+        this.setState({open: false});
     };
-     handleDateChange = date => {
-         this.setState({ selectedDate: date });
-     };
+    handleDateChange = date => {
+        this.setState({selectedDate: date});
+    };
 
     render() {
-        const { classes } = this.props;
-        const { selectedDate } = this.state;
-        return (
+        const {classes} = this.props;
+        const {selectedDate} = this.state;
 
+        return (
             <div>
-                <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
-                    Open form dialog
-                </Button>
+                <Fab onClick={this.handleOpen} color="primary" aria-label="Add" className="fixedbutton">
+                    <AddIcon/>
+                </Fab>
                 <Dialog
                     open={this.state.open}
                     onClose={this.handleClose}
-                    aria-labelledby="form-dialog-title"
-                >
-                    <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+                    aria-labelledby="form-dialog-title">
+                    <DialogTitle id="form-dialog-title">Add New Task</DialogTitle>
                     <DialogContent>
-                        <DialogContentText>
-                            To subscribe to this website, please enter your email address here. We will send
-                            updates occasionally.
-                        </DialogContentText>
+
                         <TextField
                             autoFocus
                             margin="dense"
                             id="name"
-                            label="Email Address"
-                            type="email"
+                            label="Task..."
+                            type="text"
                             fullWidth
                         />
                         <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -80,7 +78,7 @@ import { MuiPickersUtilsProvider, TimePicker, DatePicker } from 'material-ui-pic
                             Cancel
                         </Button>
                         <Button onClick={this.handleClose} color="primary">
-                            Subscribe
+                            Publish Task
                         </Button>
                     </DialogActions>
                 </Dialog>
