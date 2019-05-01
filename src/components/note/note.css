@@ -1,0 +1,8 @@
+.noteBody{
+    background-image: url("../../images/sticky-note1.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 300px;
+    width: 300px;
+    margin: 30px;
+}

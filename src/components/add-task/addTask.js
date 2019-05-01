@@ -27,11 +27,21 @@ class AddTask extends Component {
 
     handleClose = () => {
         this.setState({open: false});
+     //   alert(this.data.name)
+        this.props.simplifiedFunction(this.data.name,this.data.datel,this.data.times)
     };
     handleDateChange = date => {
         this.setState({selectedDate: date});
     };
+    data = {
+        'name':1,
+        'datel':2,
+        'times':3
+    }
 
+    dd =()=>{
+        localStorage.setItem("ls",JSON.stringify(this.data))
+    }
     render() {
         const {classes} = this.props;
         const {selectedDate} = this.state;
