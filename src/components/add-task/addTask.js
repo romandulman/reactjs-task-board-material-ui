@@ -4,41 +4,39 @@ import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
-import {withStyles} from '@material-ui/core/styles';
 import DateFnsUtils from '@date-io/date-fns';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import './addTask.css';
 import {MuiPickersUtilsProvider, TimePicker, DatePicker} from 'material-ui-pickers';
-let arr =[]
+
+let arr = []
 
 class AddTask extends Component {
     state = {
         open: false,
         selectedDate: new Date('2019-04-29T21:11:54'),
-       task: '',
+        task: '',
 
     };
-dataToSave ={
-    task1: this.state.task,
-dateTime: this.state.selectedDate
+    dataToSave = {
+        task1: this.state.task,
+        dateTime: this.state.selectedDate
 
-}
+    }
     handleOpen = () => {
         this.setState({open: true});
     };
 
     handleClose = () => {
         this.setState({open: false});
-     //   alert(this.data.name)
-       this.props.simplifiedFunction()
         this.dataToSave.task1 = this.state.task;
+        this.dataToSave.da = this.state.selectedDate;
         arr.push(this.dataToSave)
-        localStorage.setItem("ls",JSON.stringify(arr))
+        localStorage.setItem("ls", JSON.stringify(arr))
+        this.props.simplifiedFunction(this.dataToSave.task1, this.dataToSave.dateTime)
 
     };
     handleDateChange = date => {
@@ -68,7 +66,9 @@ dateTime: this.state.selectedDate
                             id="name"
                             label="Task..."
                             type="text"
-                            onChange={(e)=>{this.setState({task: e.target.value})}}
+                            onChange={(e) => {
+                                this.setState({task: e.target.value})
+                            }}
                             fullWidth
                         />
                         <MuiPickersUtilsProvider utils={DateFnsUtils}>

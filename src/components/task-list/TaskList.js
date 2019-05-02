@@ -1,43 +1,50 @@
 import React, {Component} from 'react';
-
+import {Container, Row, Col} from 'react-grid-system';
 import Note from '../../components/note/note'
 import AddTask from '../../components/add-task/addTask'
-import './'
+import './tasklist.css'
+
 class TaskList extends Component {
+    simplifiedFunction = (task, DateTime) => {
+        const data = this.state.data;
+        let size = {
+            Task: task,
+            dateTime: DateTime
+        }
+
+        //data.length + 1;
+        data.push(size);
+        this.setState({data});
+    }
+
     constructor(props) {
         super(props);
 
         // save data in state
         this.state = {
-            data: ["",""]
+            data: [
+                {
+                    Task: 'ff',
+                    dateTime: 'w'
+                }
+            ]
 
         }
     }
 
-    simplifiedFunction  = () => {
-        const data = this.state.data;
-        let size = data.length + 1;
-        data.push(size);
-
-        this.setState({data});
-
-    }
-
-    render(){
-
+    render() {
         const data = this.state.data;
         return (
-            <div className={}>
-                <AddTask simplifiedFunction = {this.simplifiedFunction}  />                <div>
-                                  <div>{data.map((number) =>
-                                      <Note />
-
-                                  )}</div>
-                </div>
-            </div>
+            <Container>
+                <AddTask simplifiedFunction={this.simplifiedFunction}/>
+                <Row>
+                    {data.map((number) =>
+                        <Col sm={4}> <Note task={number.Task}/> </Col>
+                    )}
+                </Row>
+            </Container>
         );
     }
-
 }
 
-export  default  TaskList
+export default TaskList
