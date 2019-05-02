@@ -43,11 +43,9 @@ class AddTask extends Component {
         this.setState({selectedDate: date});
     };
 
-
     render() {
         const {classes} = this.props;
         const {selectedDate} = this.state;
-
         return (
             <div>
                 <Fab onClick={this.handleOpen} color="primary" aria-label="Add" className="fixedbutton">
@@ -59,7 +57,6 @@ class AddTask extends Component {
                     aria-labelledby="form-dialog-title">
                     <DialogTitle id="form-dialog-title">Add New Task</DialogTitle>
                     <DialogContent>
-
                         <TextField
                             autoFocus
                             margin="dense"

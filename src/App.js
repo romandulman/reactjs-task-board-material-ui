@@ -1,32 +1,13 @@
 import React, {Component} from 'react';
-
 import './App.css';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
 import SchIcon from '@material-ui/icons/Schedule';
 import SplashDialog from './components/dialog/dialog'
-import AddTask from './components/add-task/addTask'
-import  TaskList from './components/task-list/TaskList'
+import TaskList from './components/task-list/TaskList'
 
 class App extends Component {
-
-    // state = {
-    //     showButton: false
-    // };
-
-
-    // simplifiedFunction= (task, date, time) =>{
-    //     console.log(task, date, time)
-    //      this.setState({
-    //          showButton: true
-    //
-    //      });
-    //
-    //
-    // }
 
     render() {
         return (
@@ -44,14 +25,10 @@ class App extends Component {
                 <body>
                 <SplashDialog/>
                 </body>
-
                 <TaskList/>
-
             </div>
         )
     } ;
-
-
 }
 
 export default App;
