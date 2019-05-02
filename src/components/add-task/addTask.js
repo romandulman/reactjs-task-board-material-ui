@@ -14,13 +14,20 @@ import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import './addTask.css';
 import {MuiPickersUtilsProvider, TimePicker, DatePicker} from 'material-ui-pickers';
+let arr =[]
 
 class AddTask extends Component {
     state = {
         open: false,
         selectedDate: new Date('2019-04-29T21:11:54'),
-    };
+       task: '',
 
+    };
+dataToSave ={
+    task1: this.state.task,
+dateTime: this.state.selectedDate
+
+}
     handleOpen = () => {
         this.setState({open: true});
     };
@@ -28,20 +35,17 @@ class AddTask extends Component {
     handleClose = () => {
         this.setState({open: false});
      //   alert(this.data.name)
-        this.props.simplifiedFunction(this.data.name,this.data.datel,this.data.times)
+       this.props.simplifiedFunction()
+        this.dataToSave.task1 = this.state.task;
+        arr.push(this.dataToSave)
+        localStorage.setItem("ls",JSON.stringify(arr))
+
     };
     handleDateChange = date => {
         this.setState({selectedDate: date});
     };
-    data = {
-        'name':1,
-        'datel':2,
-        'times':3
-    }
 
-    dd =()=>{
-        localStorage.setItem("ls",JSON.stringify(this.data))
-    }
+
     render() {
         const {classes} = this.props;
         const {selectedDate} = this.state;
@@ -64,6 +68,7 @@ class AddTask extends Component {
                             id="name"
                             label="Task..."
                             type="text"
+                            onChange={(e)=>{this.setState({task: e.target.value})}}
                             fullWidth
                         />
                         <MuiPickersUtilsProvider utils={DateFnsUtils}>

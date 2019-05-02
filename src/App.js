@@ -1,4 +1,5 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
+
 import './App.css';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -8,42 +9,47 @@ import AddIcon from '@material-ui/icons/Add';
 import SchIcon from '@material-ui/icons/Schedule';
 import SplashDialog from './components/dialog/dialog'
 import AddTask from './components/add-task/addTask'
-import Note from './components/note/note'
+import  TaskList from './components/task-list/TaskList'
+
 class App extends Component {
 
-    createImage = (image) => {
-        return <Note name={image}/>;
-       alert()
-    }
+    // state = {
+    //     showButton: false
+    // };
 
-    createImages = (images) => {
-        return images.map(this.createImage);
-    }
 
-    simplifiedFunction (task,date,time) {
-   //   return  <Note name={task} datel={date} times={time}/>
+    // simplifiedFunction= (task, date, time) =>{
+    //     console.log(task, date, time)
+    //      this.setState({
+    //          showButton: true
+    //
+    //      });
+    //
+    //
+    // }
 
-        console.log(task, date,time)
-    }
     render() {
         return (
-        <div className="App">
-            <header className="App-header">
-                <AppBar position="static" color="default">
-                    <Toolbar>
-                        <SchIcon className="logoIcon"/>
-                        <Typography variant="h5" color="inherit">
-                            My Task Board
-                        </Typography>
-                    </Toolbar>
-                </AppBar>
-            </header>
-            <body>
-            <SplashDialog/>
-            </body>
-            <AddTask   simplifiedFunction = {this.simplifiedFunction}/>
-    </div>
-  )} ;
+            <div className="App">
+                <header className="App-header">
+                    <AppBar position="static" color="default">
+                        <Toolbar>
+                            <SchIcon className="logoIcon"/>
+                            <Typography variant="h5" color="inherit">
+                                My Task Board
+                            </Typography>
+                        </Toolbar>
+                    </AppBar>
+                </header>
+                <body>
+                <SplashDialog/>
+                </body>
+
+                <TaskList/>
+
+            </div>
+        )
+    } ;
 
 
 }

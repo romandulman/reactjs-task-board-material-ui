@@ -1,17 +1,18 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './note.css'
 
-function note(props){
-return(
+class note extends Component{
 
-    <div className="noteBody">
-         <p>Hello, {props.name}</p>;
-         <p>Hello, {props.datel}</p>;
-         <p>Hello, {props.times}</p>;
+render(){
+return(
+    <div className="noteBody" >
+         <p>Hello, {this.props.name}</p>;
+         <p>Hello, {this.props.datel}</p>;
+         <p>Hello, {this.props.times}</p>;
 
     </div>
-);
-
+)
+}
 }
 
 export default note;
