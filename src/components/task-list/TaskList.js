@@ -24,8 +24,8 @@ class TaskList extends Component {
         this.state = {
             data: [
                 {
-                    Task: 'ff',
-                    dateTime: 'w'
+                    Task: '',
+                    dateTime: ''
                 }
             ]
 
@@ -39,7 +39,7 @@ class TaskList extends Component {
                 <AddTask simplifiedFunction={this.simplifiedFunction}/>
                 <Row>
                     {data.map((number) =>
-                        <Col sm={4}> <Note task={number.Task}/> </Col>
+                        <Col sm={4}> <Note task={number.Task} dateTime={number.dateTime}/> </Col>
                     )}
                 </Row>
             </Container>
