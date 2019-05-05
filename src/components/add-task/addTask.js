@@ -12,7 +12,7 @@ import AddIcon from '@material-ui/icons/Add';
 import './addTask.css';
 import {MuiPickersUtilsProvider, TimePicker, DatePicker} from 'material-ui-pickers';
 
-let arr = []
+let tasks = [], task
 
 class AddTask extends Component {
     state = {
@@ -21,25 +21,30 @@ class AddTask extends Component {
         task: '',
 
     };
-    dataToSave = {
-        task1: this.state.task,
-        dateTime: this.state.selectedDate
 
-    }
     handleOpen = () => {
         this.setState({open: true});
     };
 
     handleClose = () => {
         this.setState({open: false});
-        this.dataToSave.task1 = this.state.task;
-        this.dataToSave.dateTime = this.state.selectedDate;
-       // alert(this.state.selectedDate);
-      //  arr.push(this.dataToSave)
-     //   localStorage.setItem("ls", JSON.stringify(arr))
-        this.props.simplifiedFunction(this.state.task,this.state.selectedDate)
+
 
     };
+    handleSave = () => {
+        this.setState({open: false});
+        task = {
+            Task: this.state.task,
+            dateTime: String(this.state.selectedDate),
+
+        };
+
+        tasks.push(task)
+        localStorage.setItem("TaskList", JSON.stringify(tasks))
+        this.props.simplifiedFunction(task.Task, task.dateTime)
+
+    };
+
     handleDateChange = date => {
         this.setState({selectedDate: date});
     };
@@ -90,7 +95,7 @@ class AddTask extends Component {
                         <Button onClick={this.handleClose} color="primary">
                             Cancel
                         </Button>
-                        <Button onClick={this.handleClose} color="primary">
+                        <Button onClick={this.handleSave} color="primary">
                             Publish Task
                         </Button>
                     </DialogActions>
