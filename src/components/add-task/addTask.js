@@ -33,9 +33,9 @@ class AddTask extends Component {
     handleClose = () => {
         this.setState({open: false});
         this.dataToSave.task1 = this.state.task;
-        this.dataToSave.da = this.state.selectedDate;
-        arr.push(this.dataToSave)
-        localStorage.setItem("ls", JSON.stringify(arr))
+        this.dataToSave.dateTime = this.state.selectedDate;
+      //  arr.push(this.dataToSave)
+     //   localStorage.setItem("ls", JSON.stringify(arr))
         this.props.simplifiedFunction(this.dataToSave.task1, this.dataToSave.dateTime)
 
     };
