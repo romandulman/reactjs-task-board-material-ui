@@ -1,5 +1,5 @@
 pipeline {
-     agent { docker nodejs-deployment-dind }
+     agent { docker 'nodejs-deployment-dind' }
      stages {
           stage("Checkout") {
                steps {
