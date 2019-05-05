@@ -7,14 +7,15 @@ import './tasklist.css'
 class TaskList extends Component {
     simplifiedFunction = (task, DateTime) => {
         const data = this.state.data;
-        let size = {
+        let arr = {
             Task: task,
             dateTime: DateTime
         }
-
+          ;
         //data.length + 1;
-        data.push(size);
-        this.setState({data});
+       data.push(arr);
+      //  alert(arr.dateTime)
+     this.setState({data});
     }
 
     constructor(props) {
@@ -25,7 +26,7 @@ class TaskList extends Component {
             data: [
                 {
                     Task: '',
-                    dateTime: ''
+                    dateTime: '2019-04-29T21:11:54'
                 }
             ]
 
@@ -35,6 +36,7 @@ class TaskList extends Component {
     render() {
         const data = this.state.data;
         return (
+            <div>
             <Container>
                 <AddTask simplifiedFunction={this.simplifiedFunction}/>
                 <Row>
@@ -43,6 +45,7 @@ class TaskList extends Component {
                     )}
                 </Row>
             </Container>
+            </div>
         );
     }
 }

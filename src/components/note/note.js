@@ -6,7 +6,7 @@ class note extends Component {
     render() {
         return (
             <div className="noteBody">
-                <p><b>Task:</b><div className="outText"> {this.props.task}</div></p>
+                <p><b>Task:</b><p className="outText"> {this.props.task}</p></p>
                 <p><b>Date Time:</b> {this.props.dateTime}</p>
 
             </div>

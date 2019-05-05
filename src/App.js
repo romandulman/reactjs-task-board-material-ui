@@ -22,9 +22,7 @@ class App extends Component {
                         </Toolbar>
                     </AppBar>
                 </header>
-                <body>
                 <SplashDialog/>
-                </body>
                 <TaskList/>
             </div>
         )

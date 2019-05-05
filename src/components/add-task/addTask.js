@@ -34,9 +34,10 @@ class AddTask extends Component {
         this.setState({open: false});
         this.dataToSave.task1 = this.state.task;
         this.dataToSave.dateTime = this.state.selectedDate;
+       // alert(this.state.selectedDate);
       //  arr.push(this.dataToSave)
      //   localStorage.setItem("ls", JSON.stringify(arr))
-        this.props.simplifiedFunction(this.dataToSave.task1, this.dataToSave.dateTime)
+        this.props.simplifiedFunction(this.state.task,this.state.selectedDate)
 
     };
     handleDateChange = date => {
