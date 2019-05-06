@@ -9,7 +9,7 @@ pipeline {
           }
           stage('SonarQube Analysis') {
                steps {
-                sh "/home/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqubescanner/bin/sonar-scanner -Dsonar.host.url=http://10.0.0.2:9000 -Dsonar.projectKey=react-task-board -Dsonar.sources=.\ -Dsonar.projectBaseDir=/home/jenkins/workspace/react-task-board-app"
+                sh "/home/jenkins/tools/hudson.plugins.sonar.SonarRunnerInstallation/sonarqubescanner/bin/sonar-scanner -Dsonar.host.url=http://10.0.0.2:9000 -Dsonar.projectKey=react-task-board -Dsonar.sources=. -Dsonar.projectBaseDir=/home/jenkins/workspace/react-task-board-app"
               }
           }
           stage("Build") {
