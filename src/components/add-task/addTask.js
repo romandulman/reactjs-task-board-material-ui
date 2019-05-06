@@ -39,9 +39,9 @@ class AddTask extends Component {
 
         };
 
-        tasks.push(task)
-        localStorage.setItem("TaskList", JSON.stringify(tasks))
-        this.props.simplifiedFunction(task.Task, task.dateTime)
+      //  tasks.push(task)
+      //  localStorage.setItem("TaskList", JSON.stringify(tasks))
+       this.props.AddTaskHandler(task.Task, task.dateTime)
 
     };
 
@@ -54,7 +54,7 @@ class AddTask extends Component {
         const {selectedDate} = this.state;
         return (
             <div>
-                <Fab onClick={this.handleOpen} color="primary" aria-label="Add" className="fixedbutton">
+                <Fab  onClick={this.handleOpen} color="primary" aria-label="Add" className="fixedbutton">
                     <AddIcon/>
                 </Fab>
                 <Dialog

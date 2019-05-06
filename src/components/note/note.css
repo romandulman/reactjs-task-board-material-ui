@@ -11,6 +11,10 @@
     margin: 25px;
 }
 
+.noteBody:hover .CloseIco {
+    display: block;
+}
+
 p {
     font-size: 16px;
     margin-top: 5px;
@@ -30,4 +34,10 @@ p {
     max-width: 170px;
     font-size: 11pt;
 
+}
+
+.CloseIco {
+    float: right;
+    display: none;
+    cursor: pointer;
 }
