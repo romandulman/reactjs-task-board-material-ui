@@ -8,16 +8,12 @@ pipeline {
 
           }
           stage('Sonarqube') {
-              environment {
-                  scannerHome = tool 'SonarQubeScanner'
-              }
               steps {
-                  withSonarQubeEnv('sonarqube') {
-                      sh "${scannerHome}/bin/sonar-scanner"
-                  }
-                  timeout(time: 10, unit: 'MINUTES') {
-                      waitForQualityGate abortPipeline: true
-                  }
+                sh 'sonar-scanner \
+                      -Dsonar.projectKey=react-task-board \
+                      -Dsonar.sources=. \
+                      -Dsonar.host.url=http://192.168.2.11:9000 \
+                      -Dsonar.login=b147026426f290f7128d8bf2531ab66ab71fa335'
               }
           }
           stage("Build") {
