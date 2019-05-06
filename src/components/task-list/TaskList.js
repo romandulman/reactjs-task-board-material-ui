@@ -3,15 +3,38 @@ import {Container, Row, Col} from 'react-grid-system';
 import Note from '../../components/note/note'
 import AddTask from '../../components/add-task/addTask'
 import './tasklist.css'
-let arr,count = 0
+
+let arr;
+
 class TaskList extends Component {
+    AddTaskHandler = (task, DateTime) => {
+        const data = this.state.data;
+        arr = {
+            Task: task,
+            dateTime: DateTime
+        };
+        data.push(arr);
+        this.setState({data});
+        localStorage.setItem("TaskList", JSON.stringify(data))
+
+    };
+    RemoveHandler = (id) => {
+        const data = this.state.data;
+        console.log(id)
+        data.splice(id, 1);
+        localStorage.removeItem("TaskList");
+        localStorage.setItem("TaskList", JSON.stringify(data))
+        this.setState({data});
+
+    };
+
     constructor(props) {
         super(props);
 
         // save data in state
         this.state = {
             data: [
-                {   Id: '',
+                {
                     Task: 'Example',
                     dateTime: 'example Date and time'
                 }
@@ -21,29 +44,10 @@ class TaskList extends Component {
     }
 
     componentDidMount() {
-        let data = JSON.parse(localStorage.getItem("TaskList"))
-        this.setState({data});
-    }
 
-    AddTaskHandler = (task, DateTime) => {
-        count ++
+        let data = JSON.parse(localStorage.getItem("TaskList"));
+        if (data != null) this.setState({data});
 
-        const data = this.state.data;
-        arr = {
-            Id: count,
-            Task: task,
-            dateTime: DateTime
-        };
-        data.push(arr);
-        this.setState({data});
-        localStorage.setItem("TaskList", JSON.stringify(data))
-        alert(count)
-
-    };
-
-
-    RemoveHandler = (id) =>{
-      //  alert(id)
     }
 
     render() {
@@ -54,9 +58,10 @@ class TaskList extends Component {
                     <AddTask AddTaskHandler={this.AddTaskHandler}/>
                     <Row>
                         {
-                            data.map((notes) =>
+                            data.map((notes, index) =>
 
-                                <Col sm={4}> <Note RemoveHandler={this.RemoveHandler} Id={notes.Id} task={notes.Task} dateTime={String(notes.dateTime)}/> </Col>
+                                <Col sm={4}> <Note key={index} RemoveHandler={this.RemoveHandler} Id={index}
+                                                   task={notes.Task} dateTime={String(notes.dateTime)}/> </Col>
                             )}
                     </Row>
                 </Container>
