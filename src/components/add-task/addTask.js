@@ -9,10 +9,11 @@ import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
+import Tooltip from '@material-ui/core/Tooltip';
 import './addTask.css';
 import {MuiPickersUtilsProvider, TimePicker, DatePicker} from 'material-ui-pickers';
 
-let tasks = [], task
+let task;
 
 class AddTask extends Component {
     state = {
@@ -36,13 +37,9 @@ class AddTask extends Component {
         task = {
             Task: this.state.task,
             dateTime: String(this.state.selectedDate),
-
         };
 
-      //  tasks.push(task)
-      //  localStorage.setItem("TaskList", JSON.stringify(tasks))
        this.props.AddTaskHandler(task.Task, task.dateTime)
-
     };
 
     handleDateChange = date => {
@@ -50,13 +47,14 @@ class AddTask extends Component {
     };
 
     render() {
-        const {classes} = this.props;
         const {selectedDate} = this.state;
         return (
             <div>
-                <Fab  onClick={this.handleOpen} color="primary" aria-label="Add" className="fixedbutton">
-                    <AddIcon/>
-                </Fab>
+                <Tooltip title="Add Task Note" placement="right-start">
+                    <Fab  onClick={this.handleOpen} color="primary" aria-label="Add" className="fixedbutton">
+                        <AddIcon/>
+                    </Fab>
+                </Tooltip>
                 <Dialog
                     open={this.state.open}
                     onClose={this.handleClose}
@@ -105,4 +103,4 @@ class AddTask extends Component {
     }
 }
 
-export default AddTask
+export default AddTask;
