@@ -10,7 +10,7 @@ pipeline {
           stage('SonarQube analysis') {
                steps {
                 def sonarqubeScannerHome = tool name: 'LocalSonar'
-                sh "${sonarqubeScannerHome}/bin/sonar-scanner -Dsonar.host.url=http://http://10.0.0.2:9000 -Dproject.settings='sonar-project.properties' -Dsonar.projectBaseDir=."
+                sh "${sonarqubeScannerHome}/bin/sonar-scanner -Dsonar.host.url=http://10.0.0.2:9000 -Dproject.settings='sonar-project.properties' -Dsonar.projectBaseDir=."
               }
           }
           stage("Build") {
