@@ -13,14 +13,11 @@ import Tooltip from '@material-ui/core/Tooltip';
 import './addTask.css';
 import {MuiPickersUtilsProvider, TimePicker, DatePicker} from 'material-ui-pickers';
 
-let task;
-
 class AddTask extends Component {
     state = {
         open: false,
         selectedDate: new Date('2019-04-29T21:11:54'),
-        task: '',
-
+        task: 'Empty Task',
     };
 
     handleOpen = () => {
@@ -29,17 +26,10 @@ class AddTask extends Component {
 
     handleClose = () => {
         this.setState({open: false});
-
-
     };
     handleSave = () => {
         this.setState({open: false});
-        task = {
-            Task: this.state.task,
-            dateTime: String(this.state.selectedDate),
-        };
-
-       this.props.AddTaskHandler(task.Task, task.dateTime)
+       this.props.AddTaskHandler(this.state.task, this.state.selectedDate)
     };
 
     handleDateChange = date => {
