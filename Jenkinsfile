@@ -17,7 +17,14 @@ pipeline {
                steps {
                         sh 'node --version'
                         sh 'npm install'
+                        sh 'docker build -t My_Task_Board .
+
                }
           }
+          stage("Build") {
+                         steps {
+                                  sh 'docker run --name my-task-board-app -P -d My_Task_Board'
+                         }
+                    }
      }
 }
