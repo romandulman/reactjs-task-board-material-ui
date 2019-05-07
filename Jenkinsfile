@@ -3,7 +3,7 @@ pipeline {
      stages {
           stage("Checkout") {
                steps {
-                git url: 'http://192.168.2.11:10080/devadmin/react-my-task-board.git'
+                git url: 'https://github.com/romandulman/reactjs-task-board-material-ui.git'
                }
 
           }
