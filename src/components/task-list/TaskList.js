@@ -7,6 +7,18 @@ import './tasklist.css'
 let arr;
 
 class TaskList extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: [
+                {
+                    Task: 'Example Task',
+                    dateTime: 'Example Date and time'
+                }
+            ]
+
+        }
+    }
     AddTaskHandler = (task, DateTime) => {
         const data = this.state.data;
         arr = {
@@ -25,23 +37,8 @@ class TaskList extends Component {
         localStorage.removeItem("TaskList");
         localStorage.setItem("TaskList", JSON.stringify(data));
         this.setState({data});
-
     };
 
-    constructor(props) {
-        super(props);
-
-        // save data in state
-        this.state = {
-            data: [
-                {
-                    Task: 'Example',
-                    dateTime: 'example Date and time'
-                }
-            ]
-
-        }
-    }
 
     componentDidMount() {
 
