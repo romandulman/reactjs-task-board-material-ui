@@ -13,13 +13,11 @@ import Tooltip from '@material-ui/core/Tooltip';
 import './addTask.css';
 import {MuiPickersUtilsProvider, TimePicker, DatePicker} from 'material-ui-pickers';
 
-let task;
-
 class AddTask extends Component {
     state = {
         open: false,
         selectedDate: new Date('2019-04-29T21:11:54'),
-        task: 'Example Task',
+        task: 'Empty Task',
     };
 
     handleOpen = () => {
