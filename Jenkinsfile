@@ -22,9 +22,9 @@ pipeline {
                }
           }
           stage("Build") {
-                         steps {
+               steps {
                                   sh 'docker run --name my-task-board-app -P -d My_Task_Board'
-                         }
-                    }
+               }
+          }
      }
 }
