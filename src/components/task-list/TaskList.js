@@ -32,7 +32,6 @@ class TaskList extends Component {
     };
     RemoveHandler = (id) => {
         const data = this.state.data;
-        console.log(id);
         data.splice(id, 1);
         localStorage.removeItem("TaskList");
         localStorage.setItem("TaskList", JSON.stringify(data));
