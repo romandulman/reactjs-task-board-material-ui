@@ -46,14 +46,13 @@ class TaskList extends Component {
     }
 
     render() {
-        const data = this.state.data;
         return (
             <div>
                 <Container>
                     <AddTask AddTaskHandler={this.AddTaskHandler}/>
                     <Row>
                         {
-                            data.map((notes, index) =>
+                            this.state.data.map((notes, index) =>
 
                                 <Col sm={4}> <Note key={index} RemoveHandler={this.RemoveHandler} Id={index}
                                                    task={notes.Task} dateTime={String(notes.dateTime)}/> </Col>
