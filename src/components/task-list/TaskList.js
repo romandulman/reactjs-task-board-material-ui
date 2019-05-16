@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Container, Row, Col} from 'react-grid-system';
 import Note from '../../components/note/note'
 import AddTask from '../../components/add-task/addTask'
-import './tasklist.css'
 
 let arr;
 
