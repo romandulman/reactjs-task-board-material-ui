@@ -4,16 +4,15 @@ import Tooltip from '@material-ui/core/Tooltip';
 import './note.css'
 
 class note extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-         Id: this.props.Id
-        }
-    }
-handleRemove = () =>{
-    this.props.RemoveHandler(this.state.id)
 
-};
+    state = {
+        Id: this.props.Id
+    };
+
+    handleRemove = () => {
+        this.props.RemoveHandler(this.state.id)
+    };
+
     render() {
         return (
             <div className="noteBody" id={this.props.Id}>
