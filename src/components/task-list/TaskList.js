@@ -3,7 +3,6 @@ import {Container, Row, Col} from 'react-grid-system';
 import Note from '../../components/note/note'
 import AddTask from '../../components/add-task/addTask'
 
-let arr;
 
 class TaskList extends Component {
     constructor(props) {
@@ -18,17 +17,20 @@ class TaskList extends Component {
 
         }
     }
+
     AddTaskHandler = (task, DateTime) => {
-        const data = this.state.data;
-        arr = {
+       let arr = {
             Task: task,
             dateTime: DateTime
         };
-        data.push(arr);
-        this.setState({data});
-        localStorage.setItem("TaskList", JSON.stringify(data))
 
+        this.setState ({
+            data: [...this.state.data, arr]
+        },
+        () => localStorage.setItem("TaskList", JSON.stringify(this.state.data))
+        )
     };
+
     RemoveHandler = (id) => {
         const data = this.state.data;
         data.splice(id, 1);
