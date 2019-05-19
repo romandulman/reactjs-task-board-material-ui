@@ -5,25 +5,16 @@ import AddTask from '../../components/add-task/addTask'
 
 
 class TaskList extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: [
-                {
-                    Task: 'Example Task',
-                    dateTime: 'Example Date and time'
-                }
-            ]
 
-        }
-    }
+    state = {
+        data: []
+    };
 
     AddTaskHandler = (task, DateTime) => {
        let arr = {
             Task: task,
             dateTime: DateTime
         };
-
         this.setState ({
             data: [...this.state.data, arr]
         },
@@ -41,11 +32,9 @@ class TaskList extends Component {
 
 
     componentDidMount() {
-
         let data = JSON.parse(localStorage.getItem("TaskList"));
         if (data != null) this.setState({data});
-
-    }
+    };
 
     render() {
         return (
@@ -58,12 +47,13 @@ class TaskList extends Component {
 
                                 <Col sm={4}> <Note key={index} RemoveHandler={this.RemoveHandler} Id={index}
                                                    task={notes.Task} dateTime={String(notes.dateTime)}/> </Col>
-                            )}
+                            )
+                        }
                     </Row>
                 </Container>
             </div>
         );
-    }
+    };
 }
 
-export default TaskList
+export default TaskList;
