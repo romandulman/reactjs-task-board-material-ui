@@ -29,7 +29,7 @@ class TaskList extends Component {
         localStorage.setItem("TaskList", JSON.stringify(data));
         this.setState({data});
     };
-    
+
     componentDidMount() {
         let data = JSON.parse(localStorage.getItem("TaskList"));
         if (data != null) this.setState({data});
