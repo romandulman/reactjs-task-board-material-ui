@@ -35,11 +35,7 @@ class AddTask extends Component {
         };
        this.props.AddTaskHandler(task.Task, task.dateTime)
     };
-
-    handleDateChange = date => {
-        this.setState({selectedDate: date});
-    };
-
+    
     render() {
         const {selectedDate} = this.state;
         return (
@@ -58,7 +54,8 @@ class AddTask extends Component {
                         <TextField
                             autoFocus
                             margin="dense"
-                            id="name"
+                            id="task"
+                            name="task"
                             label="Task..."
                             type="text"
                             onChange={(e) => {
@@ -71,15 +68,23 @@ class AddTask extends Component {
                                 <DatePicker
                                     margin="normal"
                                     label="Date picker"
+                                    id="date"
+                                    name="selectedDate"
                                     value={selectedDate}
-                                    onChange={this.handleDateChange}
+
+                                    onChange={(e) => {
+                                        this.setState({selectedDate: e})
+                                    }}
                                 />
                                 <TimePicker
                                     margin="normal"
                                     label="Time picker"
+                                    id="time"
+                                    name="selectedDate"
                                     value={selectedDate}
-                                    onChange={this.handleDateChange}
-                                />
+                                    onChange={(e) => {
+                                        this.setState({selectedDate: e})
+                                    }}                                />
                             </Grid>
                         </MuiPickersUtilsProvider>
                     </DialogContent>
