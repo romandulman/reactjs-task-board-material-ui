@@ -44,7 +44,7 @@ class TaskList extends Component {
                         {
                             this.state.data.map((notes, index) =>
 
-                                <Col sm={4}> <Note key={index} RemoveHandler={this.RemoveHandler} Id={index}
+                                <Col sm={4}> <Note  RemoveHandler={this.RemoveHandler} Id={index}
                                                    task={notes.Task} dateTime={String(notes.dateTime)}/> </Col>
                             )
                         }

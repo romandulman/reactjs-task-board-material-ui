@@ -19,7 +19,9 @@ class App extends Component {
                             <Typography variant="h5" color="inherit">
                                 My Task Board
                             </Typography>
+
                         </Toolbar>
+
                     </AppBar>
                 </header>
                 <SplashDialog/>

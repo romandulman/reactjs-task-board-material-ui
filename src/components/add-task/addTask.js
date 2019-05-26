@@ -20,16 +20,13 @@ class AddTask extends Component {
         task: '',
     };
 
-    handleOpen = () => {
-        this.setState({open: true});
+    handleView = () => {
+        (this.state.open) ? this.setState({open: false}) : this.setState({open: true});
     };
 
-    handleClose = () => {
-        this.setState({open: false});
-    };
     handleSave = () => {
-        this.setState({open: false});
-       let task = {
+        this.handleView();
+        let task = {
             Task: this.state.task,
             dateTime: String(this.state.selectedDate),
         };
@@ -37,25 +34,22 @@ class AddTask extends Component {
     };
     
     render() {
-        const {selectedDate} = this.state;
         return (
             <div>
                 <Tooltip title="Add Task Note" placement="right-start">
-                    <Fab  onClick={this.handleOpen} color="primary" aria-label="Add" className="fixedbutton">
+                    <Fab  onClick={this.handleView} color="primary" aria-label="Add" className="fixedbutton">
                         <AddIcon/>
                     </Fab>
                 </Tooltip>
                 <Dialog
                     open={this.state.open}
-                    onClose={this.handleClose}
+                    onClose={this.handleView}
                     aria-labelledby="form-dialog-title">
                     <DialogTitle id="form-dialog-title">Add New Task</DialogTitle>
                     <DialogContent>
                         <TextField
                             autoFocus
                             margin="dense"
-                            id="task"
-                            name="task"
                             label="Task..."
                             type="text"
                             onChange={(e) => {
@@ -68,10 +62,8 @@ class AddTask extends Component {
                                 <DatePicker
                                     margin="normal"
                                     label="Date picker"
-                                    id="date"
                                     name="selectedDate"
-                                    value={selectedDate}
-
+                                    value={this.state.selectedDate}
                                     onChange={(e) => {
                                         this.setState({selectedDate: e})
                                     }}
@@ -79,17 +71,15 @@ class AddTask extends Component {
                                 <TimePicker
                                     margin="normal"
                                     label="Time picker"
-                                    id="time"
-                                    name="selectedDate"
-                                    value={selectedDate}
+                                    value={this.state.selectedDate}
                                     onChange={(e) => {
                                         this.setState({selectedDate: e})
-                                    }}                                />
+                                    }}/>
                             </Grid>
                         </MuiPickersUtilsProvider>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={this.handleClose} color="primary">
+                        <Button onClick={this.handleView} color="primary">
                             Cancel
                         </Button>
                         <Button onClick={this.handleSave} color="primary">

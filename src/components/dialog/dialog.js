@@ -12,16 +12,12 @@ class splashDialog extends Component {
         open: false,
     };
 
-    handleClickOpen = () => {
-        this.setState({open: true});
-    };
-
-    handleClose = () => {
-        this.setState({open: false});
+    handleDialogView = () => {
+        (this.state.open) ? this.setState({open: false}) : this.setState({open: true});
     };
 
     componentDidMount() {
-        this.handleClickOpen();
+        this.handleDialogView();
     }
 
     render() {
@@ -29,7 +25,7 @@ class splashDialog extends Component {
             <div>
                 <Dialog
                     open={this.state.open}
-                    onClose={this.handleClose}
+                    onClose={this.handleDialogView}
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description">
                     <DialogTitle id="alert-dialog-title">{"Hi!"}</DialogTitle>
@@ -39,7 +35,7 @@ class splashDialog extends Component {
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={this.handleClose} color="primary" autoFocus>
+                        <Button onClick={this.handleDialogView} color="primary" autoFocus>
                             Ok
                         </Button>
                     </DialogActions>

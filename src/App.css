@@ -11,20 +11,14 @@ body {
 }
 
 .App {
-  text-align: center;
-}
-
-
-.App-header {
-
+    text-align: center;
 }
 
 .fixedbutton {
-position: fixed ;
-
-bottom: 25px;
+    position: fixed;
+    bottom: 25px;
 }
 
-.logoIcon{
-  margin-right: 10px;
+.logoIcon {
+    margin-right: 10px;
 }

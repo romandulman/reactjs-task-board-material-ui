@@ -5,19 +5,15 @@ import './note.css'
 
 class note extends Component {
 
-    state = {
-        Id: this.props.Id
-    };
-
     handleRemove = () => {
-        this.props.RemoveHandler(this.state.id)
+        this.props.RemoveHandler(this.props.Id);
     };
 
     render() {
         return (
             <div className="noteBody" id={this.props.Id}>
                 <Tooltip title="Remove Note" placement="top">
-                    <CloseIcon className="CloseIco" onClick={this.handleRemove}/>
+                    <CloseIcon className="CloseIco"  onClick={this.handleRemove}/>
                 </Tooltip>
                 <p><b>Task:</b><p className="outText"> {this.props.task}</p></p>
                 <p><b>Date Time:</b></p>
