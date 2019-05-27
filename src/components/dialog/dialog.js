@@ -22,8 +22,9 @@ class splashDialog extends Component {
 
     render() {
         return (
-            <div>
+            <div name="addModaldialog">
                 <Dialog
+
                     open={this.state.open}
                     onClose={this.handleDialogView}
                     aria-labelledby="alert-dialog-title"
@@ -35,7 +36,7 @@ class splashDialog extends Component {
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={this.handleDialogView} color="primary" autoFocus>
+                        <Button onClick={this.handleDialogView} name="modalOk" color="primary" autoFocus>
                             Ok
                         </Button>
                     </DialogActions>

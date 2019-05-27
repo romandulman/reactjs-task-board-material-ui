@@ -25,7 +25,6 @@ class TaskList extends Component {
     RemoveHandler = (id) => {
         const data = this.state.data;
         data.splice(id, 1);
-        localStorage.removeItem("TaskList");
         localStorage.setItem("TaskList", JSON.stringify(data));
         this.setState({data});
     };
@@ -44,7 +43,7 @@ class TaskList extends Component {
                         {
                             this.state.data.map((notes, index) =>
 
-                                <Col sm={4}> <Note  RemoveHandler={this.RemoveHandler} Id={index}
+                                <Col sm={4}> <Note  RemoveHandler={this.RemoveHandler} noteId={index}
                                                    task={notes.Task} dateTime={String(notes.dateTime)}/> </Col>
                             )
                         }

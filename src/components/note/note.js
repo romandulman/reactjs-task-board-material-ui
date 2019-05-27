@@ -3,15 +3,15 @@ import CloseIcon from '@material-ui/icons/Close';
 import Tooltip from '@material-ui/core/Tooltip';
 import './note.css'
 
-class note extends Component {
+class Note extends Component {
 
     handleRemove = () => {
-        this.props.RemoveHandler(this.props.Id);
+        this.props.RemoveHandler(this.props.noteId);
     };
 
     render() {
         return (
-            <div className="noteBody" id={this.props.Id}>
+            <div className="noteBody" id={this.props.noteId}>
                 <Tooltip title="Remove Note" placement="top">
                     <CloseIcon className="CloseIco"  onClick={this.handleRemove}/>
                 </Tooltip>
@@ -24,4 +24,4 @@ class note extends Component {
 }
 
 
-export default note;
+export default Note;

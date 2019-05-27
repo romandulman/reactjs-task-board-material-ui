@@ -37,7 +37,7 @@ class AddTask extends Component {
         return (
             <div>
                 <Tooltip title="Add Task Note" placement="right-start">
-                    <Fab  onClick={this.handleView} color="primary" aria-label="Add" className="fixedbutton">
+                    <Fab  onClick={this.handleView} name="add" color="primary" aria-label="Add" className="fixedbutton">
                         <AddIcon/>
                     </Fab>
                 </Tooltip>
